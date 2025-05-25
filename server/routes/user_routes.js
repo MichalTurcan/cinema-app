@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const insertDefaultAdmin = async () => {
   try {
-    const adminEmail = "gama.uniza@gmail.com";
+    const adminEmail = 'gama.uniza@gmail.com';
     const adminPassword = process.env.DEFAULT_ADMIN_PASSWORD;
 
     const [existingAdmin] = await db.query(`SELECT * FROM users WHERE email = ?`, [adminEmail]);
@@ -121,13 +121,13 @@ const getSpecificUser = async (req, res) => {
         sp.program_id, sp.name AS program_name,
         f.faculty_id, f.code AS faculty_code, f.name AS faculty_name,
         d.degree_id, d.code AS degree_code, d.name AS degree_name
-      FROM bakalarskapraca.users u
-      LEFT JOIN bakalarskapraca.contact_info ci ON u.userId = ci.user_id
-      LEFT JOIN bakalarskapraca.city c ON ci.city_id = c.city_id
-      LEFT JOIN bakalarskapraca.academic_info ai ON ai.user_id = u.userId
-      LEFT JOIN bakalarskapraca.study_programs sp ON sp.program_id = ai.program_id
-      LEFT JOIN bakalarskapraca.faculties f ON f.faculty_id = sp.faculty_id
-      LEFT JOIN bakalarskapraca.degrees d ON d.degree_id = sp.degree_id
+      FROM users u
+      LEFT JOIN contact_info ci ON u.userId = ci.user_id
+      LEFT JOIN city c ON ci.city_id = c.city_id
+      LEFT JOIN academic_info ai ON ai.user_id = u.userId
+      LEFT JOIN study_programs sp ON sp.program_id = ai.program_id
+      LEFT JOIN faculties f ON f.faculty_id = sp.faculty_id
+      LEFT JOIN degrees d ON d.degree_id = sp.degree_id
       WHERE u.userId = ?`,
       [userId]
     );
@@ -173,7 +173,7 @@ const updateUserInfo = async (req, res) => {
       console.log("Received file:", profileImage);
       
       try {
-        const [currentUser] = await db.query('SELECT imageLocation FROM bakalarskapraca.users WHERE userId = ?', [userId]);
+        const [currentUser] = await db.query('SELECT imageLocation FROM users WHERE userId = ?', [userId]);
         if (currentUser.length > 0 && currentUser[0].imageLocation) {
           const oldImagePath = path.join(__dirname, '../public/avatars', currentUser[0].imageLocation.replace('/avatars/', ''));
           if (fs.existsSync(oldImagePath)) {
@@ -192,7 +192,7 @@ const updateUserInfo = async (req, res) => {
     
     try {
       await db.query(
-        `UPDATE bakalarskapraca.users
+        `UPDATE users
          SET name = ?, surname = ?, imageLocation = COALESCE(?, imageLocation)
          WHERE userId = ?`,
         [name || null, surname || null, profileImage, userId]
@@ -201,7 +201,7 @@ const updateUserInfo = async (req, res) => {
       let cityId = null;
       if (city && postal_code) {
         const [existingCity] = await db.query(
-          `SELECT city_id FROM bakalarskapraca.city 
+          `SELECT city_id FROM city 
            WHERE city = ? AND postal_code = ?`,
           [city, postal_code]
         );
@@ -210,7 +210,7 @@ const updateUserInfo = async (req, res) => {
           cityId = existingCity[0].city_id;
         } else {
           const [newCityResult] = await db.query(
-            `INSERT INTO bakalarskapraca.city (city, postal_code) 
+            `INSERT INTO city (city, postal_code) 
              VALUES (?, ?)`,
             [city, postal_code]
           );
@@ -219,13 +219,13 @@ const updateUserInfo = async (req, res) => {
       }
       
       const [contactExists] = await db.query(
-        `SELECT 1 FROM bakalarskapraca.contact_info WHERE user_id = ?`,
+        `SELECT 1 FROM contact_info WHERE user_id = ?`,
         [userId]
       );
       
       if (contactExists.length > 0) {
         await db.query(
-          `UPDATE bakalarskapraca.contact_info
+          `UPDATE contact_info
            SET instagram = ?, facebook = ?, phone = ?, address = ?, 
                city_id = ?, date_of_birth = ?
            WHERE user_id = ?`,
@@ -234,7 +234,7 @@ const updateUserInfo = async (req, res) => {
         );
       } else {
         await db.query(
-          `INSERT INTO bakalarskapraca.contact_info
+          `INSERT INTO contact_info
            (user_id, instagram, facebook, phone, address, city_id, date_of_birth)
            VALUES (?, ?, ?, ?, ?, ?, ?)`,
           [userId, instagram || null, facebook || null, phone || null, address || null,
@@ -244,12 +244,12 @@ const updateUserInfo = async (req, res) => {
       
       if (faculty && degree && study_program) {
         const [facultyResult] = await db.query(
-          `SELECT faculty_id FROM bakalarskapraca.faculties WHERE code = ?`,
+          `SELECT faculty_id FROM faculties WHERE code = ?`,
           [faculty]
         );
         
         const [degreeResult] = await db.query(
-          `SELECT degree_id FROM bakalarskapraca.degrees WHERE code = ?`,
+          `SELECT degree_id FROM degrees WHERE code = ?`,
           [degree]
         );
         
@@ -258,7 +258,7 @@ const updateUserInfo = async (req, res) => {
           const degreeId = degreeResult[0].degree_id;
           
           const [programResult] = await db.query(
-            `SELECT program_id FROM bakalarskapraca.study_programs 
+            `SELECT program_id FROM study_programs 
              WHERE faculty_id = ? AND degree_id = ? AND name = ?`,
             [facultyId, degreeId, study_program]
           );
@@ -267,20 +267,20 @@ const updateUserInfo = async (req, res) => {
             const programId = programResult[0].program_id;
             
             const [academicExists] = await db.query(
-              `SELECT 1 FROM bakalarskapraca.academic_info WHERE user_id = ?`,
+              `SELECT 1 FROM academic_info WHERE user_id = ?`,
               [userId]
             );
             
             if (academicExists.length > 0) {
               await db.query(
-                `UPDATE bakalarskapraca.academic_info
+                `UPDATE academic_info
                  SET program_id = ?, grade = ?
                  WHERE user_id = ?`,
                 [programId, grade || null, userId]
               );
             } else {
               await db.query(
-                `INSERT INTO bakalarskapraca.academic_info
+                `INSERT INTO academic_info
                  (user_id, program_id, grade)
                  VALUES (?, ?, ?)`,
                 [userId, programId, grade || null]
@@ -315,21 +315,21 @@ const getAcademicOptions = async (req, res) => {
   try {
     const [faculties] = await db.query(`
       SELECT faculty_id, code, name 
-      FROM bakalarskapraca.faculties 
+      FROM faculties 
       ORDER BY code
     `);
 
     const [degrees] = await db.query(`
       SELECT degree_id, code, name 
-      FROM bakalarskapraca.degrees 
+      FROM degrees 
       ORDER BY code
     `);
 
     const [programs] = await db.query(`
       SELECT p.program_id, p.name, f.code AS faculty_code, d.code AS degree_code
-      FROM bakalarskapraca.study_programs p
-      JOIN bakalarskapraca.faculties f ON p.faculty_id = f.faculty_id
-      JOIN bakalarskapraca.degrees d ON p.degree_id = d.degree_id
+      FROM study_programs p
+      JOIN faculties f ON p.faculty_id = f.faculty_id
+      JOIN degrees d ON p.degree_id = d.degree_id
       ORDER BY f.code, d.code, p.name
     `);
 
@@ -502,14 +502,14 @@ const getMembers = async (req, res) => {
         r.role, 
         m.isAdmin, 
         m.isLeader
-      FROM bakalarskapraca.members m
-      INNER JOIN bakalarskapraca.users u ON u.userId = m.userId
-      INNER JOIN bakalarskapraca.roles r ON r.roleId = m.roleId
-      LEFT JOIN bakalarskapraca.contact_info ci ON u.userId = ci.user_id
-      LEFT JOIN bakalarskapraca.academic_info ai ON ai.user_id = u.userId
-      LEFT JOIN bakalarskapraca.study_programs sp ON sp.program_id = ai.program_id
-      LEFT JOIN bakalarskapraca.faculties f ON f.faculty_id = sp.faculty_id
-      WHERE u.email != "gama.uniza@gmail.com"
+      FROM members m
+      INNER JOIN users u ON u.userId = m.userId
+      INNER JOIN roles r ON r.roleId = m.roleId
+      LEFT JOIN contact_info ci ON u.userId = ci.user_id
+      LEFT JOIN academic_info ai ON ai.user_id = u.userId
+      LEFT JOIN study_programs sp ON sp.program_id = ai.program_id
+      LEFT JOIN faculties f ON f.faculty_id = sp.faculty_id
+      WHERE u.email != 'gama.uniza@gmail.com'
     `);
 
     if (!members || members.length === 0) {

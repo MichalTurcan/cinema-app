@@ -140,7 +140,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
     for (const movie of movies) {
       const [existingMovie] = await db.query(
-        'SELECT id FROM bakalarskapraca.movies WHERE jellyfin_id = ?',
+        'SELECT id FROM movies WHERE jellyfin_id = ?',
         [movie.jellyfin_id]
       );
 
@@ -148,7 +148,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
       if (existingMovie.length === 0) {
         const [result] = await db.query(`
-          INSERT INTO bakalarskapraca.movies (
+          INSERT INTO movies (
             jellyfin_id, title, year, summary, poster_url, background_url,
             duration_seconds, rating, last_updated
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())
@@ -161,7 +161,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
         moviesAdded++;
       } else {
         await db.query(`
-          UPDATE bakalarskapraca.movies SET
+          UPDATE movies SET
             title = ?,
             year = ?,
             summary = ?,
@@ -182,13 +182,13 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
       if (movie.directors && movie.directors.length > 0) {
         await db.query(
-          'DELETE FROM bakalarskapraca.movie_director WHERE movie_id = ?',
+          'DELETE FROM movie_director WHERE movie_id = ?',
           [movieId]
         );
 
         for (const director of movie.directors) {
           const [existingDirector] = await db.query(
-            'SELECT director_id FROM bakalarskapraca.directors WHERE first_name = ? AND last_name = ?',
+            'SELECT director_id FROM directors WHERE first_name = ? AND last_name = ?',
             [director.firstName, director.lastName]
           );
 
@@ -196,7 +196,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
           if (existingDirector.length === 0) {
             const [result] = await db.query(
-              'INSERT INTO bakalarskapraca.directors (first_name, last_name) VALUES (?, ?)',
+              'INSERT INTO directors (first_name, last_name) VALUES (?, ?)',
               [director.firstName, director.lastName]
             );
             directorId = result.insertId;
@@ -205,7 +205,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
           }
 
           await db.query(
-            'INSERT INTO bakalarskapraca.movie_director (movie_id, director_id) VALUES (?, ?)',
+            'INSERT INTO movie_director (movie_id, director_id) VALUES (?, ?)',
             [movieId, directorId]
           );
         }
@@ -213,13 +213,13 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
       if (movie.writers && movie.writers.length > 0) {
         await db.query(
-          'DELETE FROM bakalarskapraca.movie_screenwriter WHERE movie_id = ?',
+          'DELETE FROM movie_screenwriter WHERE movie_id = ?',
           [movieId]
         );
 
         for (const writer of movie.writers) {
           const [existingWriter] = await db.query(
-            'SELECT screenwriter_id FROM bakalarskapraca.screenwriters WHERE first_name = ? AND last_name = ?',
+            'SELECT screenwriter_id FROM screenwriters WHERE first_name = ? AND last_name = ?',
             [writer.firstName, writer.lastName]
           );
 
@@ -227,7 +227,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
           if (existingWriter.length === 0) {
             const [result] = await db.query(
-              'INSERT INTO bakalarskapraca.screenwriters (first_name, last_name) VALUES (?, ?)',
+              'INSERT INTO screenwriters (first_name, last_name) VALUES (?, ?)',
               [writer.firstName, writer.lastName]
             );
             writerId = result.insertId;
@@ -236,7 +236,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
           }
 
           await db.query(
-            'INSERT INTO bakalarskapraca.movie_screenwriter (movie_id, screenwriter_id) VALUES (?, ?)',
+            'INSERT INTO movie_screenwriter (movie_id, screenwriter_id) VALUES (?, ?)',
             [movieId, writerId]
           );
         }
@@ -244,13 +244,13 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
       if (movie.actors && movie.actors.length > 0) {
         await db.query(
-          'DELETE FROM bakalarskapraca.movie_actor WHERE movie_id = ?',
+          'DELETE FROM movie_actor WHERE movie_id = ?',
           [movieId]
         );
 
         for (const actor of movie.actors) {
           const [existingActor] = await db.query(
-            'SELECT actor_id FROM bakalarskapraca.actors WHERE first_name = ? AND last_name = ?',
+            'SELECT actor_id FROM actors WHERE first_name = ? AND last_name = ?',
             [actor.firstName, actor.lastName]
           );
 
@@ -258,7 +258,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
 
           if (existingActor.length === 0) {
             const [result] = await db.query(
-              'INSERT INTO bakalarskapraca.actors (first_name, last_name) VALUES (?, ?)',
+              'INSERT INTO actors (first_name, last_name) VALUES (?, ?)',
               [actor.firstName, actor.lastName]
             );
             actorId = result.insertId;
@@ -267,7 +267,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
           }
 
           await db.query(
-            'INSERT INTO bakalarskapraca.movie_actor (movie_id, actor_id) VALUES (?, ?)',
+            'INSERT INTO movie_actor (movie_id, actor_id) VALUES (?, ?)',
             [movieId, actorId]
           );
         }
@@ -278,7 +278,7 @@ const syncMoviesFromJellyfin = async (req, res) => {
     if (jellyfinIds.length > 0) {
       const placeholders = jellyfinIds.map(() => '?').join(',');
       await db.query(`
-        DELETE FROM bakalarskapraca.movies WHERE jellyfin_id NOT IN (${placeholders})
+        DELETE FROM movies WHERE jellyfin_id NOT IN (${placeholders})
       `, jellyfinIds);
     }
 
@@ -419,7 +419,7 @@ const submitVote = async (req, res) => {
     }
 
     const [existingVote] = await db.query(`
-      SELECT id FROM bakalarskapraca.user_votes
+      SELECT id FROM user_votes
       WHERE user_id = ? AND date_id = ?
     `, [userId, dateId]);
 
@@ -433,12 +433,12 @@ const submitVote = async (req, res) => {
     await db.query('START TRANSACTION');
 
     await db.query(`
-      INSERT INTO bakalarskapraca.user_votes (user_id, date_id, movie_id)
+      INSERT INTO user_votes (user_id, date_id, movie_id)
       VALUES (?, ?, ?)
     `, [userId, dateId, movieId]);
 
     await db.query(`
-      UPDATE bakalarskapraca.movies_vote
+      UPDATE movies_vote
       SET number_of_votes = number_of_votes + 1
       WHERE date_id = ? AND movie_id = ?
     `, [dateId, movieId]);
