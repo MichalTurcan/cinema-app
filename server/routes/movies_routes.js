@@ -7,6 +7,8 @@ const getAllMovies = async (req, res) => {
   try {
     const [movies] = await db.query(`SELECT * FROM movies ORDER BY TITLE ASC`);
 
+    console.log(movies);
+
     for (const movie of movies) {
       const [genres] = await db.query(`
         SELECT * FROM genres 
