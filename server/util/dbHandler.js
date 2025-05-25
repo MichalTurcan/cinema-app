@@ -8,8 +8,8 @@ const createUser = async (email, password) => {
 
 const createAdmin = async (email, password) => {
   try {
-    const query = `INSERT INTO users(email, password) VALUES (?,?)`;
-    await db.query(query, [email, password]);
+    const query = `INSERT INTO users(email, password, isMember) VALUES (?,?,?)`;
+    await db.query(query, [email, password, 1]);
     const [userIdResult] = await db.query(`SELECT userId FROM users WHERE email = ?`, [email]);
     const userId = userIdResult[0].userId;
     await db.query(
