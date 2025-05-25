@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+    --font-second: 'Khand', sans-serif;
+
+}
+
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+
+  }
+
+.header-events{
+    height: 65vh;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0, 0.6) 100%),
+    url('../../public/img/img_2.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light-primary);
+    position: relative;
+    top: -50px;
+    
+}
+
+
+
+.header-events-title{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12vh;
+    letter-spacing: 10px;
+    margin-bottom: -10px;
+}
+
+.header-events-path{
+    display: flex;
+    justify-content: center;
+}
+
+.header-events-path p{
+    white-space: pre;
+}
+
+.header-events-link{
+    text-decoration: none;
+    color: var(--red-primary);
+}
+
+.title-events-incoming{
+    border-bottom: solid var(--text-color) 1px;
+    border-right: solid var(--text-color) 1px;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.poster{
+    width: 100%;
+}
+
+.event-title{
+    text-transform: uppercase;
+}
+
+.event-info{
+    font-size: larger;
+    display: grid;
+}
+
+.event-info i {
+    color: var(--red-primary);
+}
+
+.event-info div {
+    margin: 5px 0;
+}
+
+.event-description{
+    margin-top: 10px;
+}
+
+.container-done{
+    margin-top: 50px;
+}
+
+.title-events-done{
+    border-bottom: solid var(--text-color) 1px;
+    border-left: solid var(--text-color) 1px;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    text-align: right;
+}
+
+.event-row{
+    margin-bottom: 150px;
+}
+
+.event-photo{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: all 0.6s ease-in-out;
+}
+
+.event-photo:hover{
+    transform: scale(1.05);
+}
+
+.poster-done-more{
+    background-size: cover;
+    background-position: center;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100;
+}
+
+.poster-done-more:hover{
+    transform: scale(1.01);
+}
+
+
+.poster-done-more i{
+    font-size: 50px;
+    opacity: 0;
+    transition: all 0.6s ease-in-out;
+    color: var(--light-primary);
+
+}
+
+
+.poster-done-more:hover i{
+    opacity: 1;
+    display: inline-block;
+}
+
+.poster-done-more:hover i:hover{
+    color: var(--red-primary);
+    transform: rotate(45deg);
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    pointer-events: none;
+}
+
+.lightbox.open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lightbox.open .lightbox-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.lightbox-content img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.lightbox-prev {
+    left: -50px;
+}
+
+.lightbox-next {
+    right: -50px;
+}
+
+.lightbox-indicator {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+}

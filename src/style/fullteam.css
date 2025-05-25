@@ -1,0 +1,17 @@
+
+.filter{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.search{
+    width: 30%;
+}
+
+.check-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px 20px;
+}

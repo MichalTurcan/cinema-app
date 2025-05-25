@@ -1,0 +1,70 @@
+.responsive-container {
+    display: flex;
+    gap: 20px; /* Medzera medzi iframe a textom */
+    align-items: flex-start;
+}
+
+.responsive-iframe-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 ratio */
+}
+
+.responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.text-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-content {
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.read-more {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Modal styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 50%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close-modal {
+    margin-top: 20px;
+    cursor: pointer;
+    color: red;
+}

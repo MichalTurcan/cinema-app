@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+    --font-second: 'Khand', sans-serif;
+}
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+
+  }
+
+.title-movies {
+    border-bottom: solid var(--text-color) 1px;
+    border-left: solid var(--text-color) 1px;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    text-align: right;
+}
+
+
+.btn-select-day {
+    width: 200px;
+    margin-bottom: 25px;
+    border: 1px solid var(--text-color);
+    border-radius: 50px !important;
+
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn-active-day {
+    background-color: var(--text-color) !important;
+    color: var(--bg-color) !important;
+}
+
+.btn-nonactive-day {
+    color: var(--text-color) !important;
+    border: 1px solid var(--text-color);
+    filter: opacity(0.5);
+    transition: filter 0.3s ease-in-out;
+}
+
+.btn-nonactive-day:hover {
+    filter: opacity(1);
+    border: 1px solid var(--text-color);
+}
+
+
+
+
+.movie-card {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-color: transparent;
+    background-position: center;
+    border: none;
+
+    margin-bottom: 15px;
+
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--light-primary);
+   
+}
+
+.card-title {
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.card-time {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-icon {
+    color: var(--red-primary);
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+
+
+input[type="radio"]:checked + label.movie-card {
+    border: 2px solid var(--red-primary);
+    box-shadow: 0 0 10px rgba(237, 38, 40, 0.5);
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+  }
+  
+  label.movie-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  label.movie-card:hover {
+    transform: scale(1.01);
+  }
+
+.vote-movie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vote-movie-btn{
+    border: 1px solid var(--text-color);
+    border-radius: 40px !important;
+    color: var(--text-color) !important;
+    padding: 10px 20px;
+    margin-right: 20px;
+}
+
+.vote-movie-btn:hover{
+    color: var(--red-primary) !important;
+    border: 1px solid var(--text-color) !important;
+}
+
+.selected-movie {
+    color: var(--text-color) !important;
+}
+
+  
+
+
+
+
+
+
+
+

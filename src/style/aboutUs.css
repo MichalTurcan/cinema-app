@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --bg-color-card: #1d1d1d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+    --font-second: 'Khand', sans-serif;
+
+    --brightness-level: 2;
+}
+
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+    --bg-color-card: #ededed;
+
+
+    --brightness-level: 0.98;
+  }
+
+.header-AboutUs{
+    height: 65vh;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0, 0.6) 100%),
+    url('../../public/img/img_2.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light-primary);
+    position: relative;
+    top: -50px;
+    
+}
+
+.header-AboutUs-title{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12vh;
+    letter-spacing: 10px;
+    margin-bottom: -10px;
+}
+
+.header-AboutUs-path{
+    display: flex;
+    justify-content: center;
+}
+
+.header-AboutUs-path p{
+    white-space: pre;
+}
+
+.header-AboutUs-link{
+    text-decoration: none;
+    color: var(--red-primary);
+}
+
+.img-aboutUs {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.aboutUs-row{
+    margin-top: 50px;
+}
+
+.aboutUs-subtitle{
+    text-transform: uppercase;
+    font-family: var(--font-second);
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.col-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUs-logo{
+    width: 100%;
+}
+
+.aboutUs-img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/*
+
+.year-aboutUs {
+    font-size: 7vw;
+    font-weight: 900;
+    position: relative;
+    left: 8vw;
+    top: -3vw;
+}
+
+.dot-aboutUs {
+    font-size: 3vw;
+    font-weight: 900;
+    position: relative;
+    left: 16vw;
+    top: -9vw;
+    color: var(--red-primary);
+}
+
+.year-text-aboutUs {
+    font-size: 2vw;
+    position: relative;
+    left: 4vw;
+    top: -10vw;
+}
+
+
+.number-of-seats {
+    font-size: 7vw;
+    font-weight: 900;
+    position: relative;
+    left: 0;
+    top: -3vw;
+}
+
+.number-of-seats-one {
+    font-size: 3vw;
+    font-weight: 900;
+    position: relative;
+    left: 12vw;
+    top: -9vw;
+    color: var(--red-primary);
+}
+
+.number-of-seats-two{
+    font-size: 2vw;
+    position: relative;
+    left: 9.5vw;
+    top: -10vw;
+}
+
+.movie-number {
+    font-size: 7vw;
+    font-weight: 900;
+    position: relative;
+    left: 8vw;
+    top: -3vw;
+}
+
+.movie-number-text-one {
+    font-size: 3vw;
+    font-weight: 900;
+    position: relative;
+    left: 12vw;
+    top: -9vw;
+    color: var(--red-primary);
+}
+
+.movie-number-text-two{
+    font-size: 2vw;
+    position: relative;
+    left: 6.9vw;
+    top: -10vw;
+}
+
+.events-number {
+    font-size: 7vw;
+    font-weight: 900;
+    position: relative;
+    left: 15vw;
+    top: -3vw;
+}
+
+.evetns-plus {
+    font-size: 3vw;
+    font-weight: 900;
+    position: relative;
+    left: 19vw;
+    top: -9vw;
+    color: var(--red-primary);
+}
+
+.events-text{
+    font-size: 2vw;
+    position: relative;
+    left: 2vw;
+    top: -10vw;
+}
+
+*/
+
+.aboutUs-numbers{
+    display: grid;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+
+.aboutUs-numbers-first-row{
+    display: flex;
+    justify-content: end;
+    align-items: baseline;
+}
+
+.aboutUs-number-first {
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.aboutUs-number-second {
+    font-size: 50px;
+    font-weight: 900;
+    color: var(--red-primary);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.aboutUs-numbers-second-row{
+    font-size: 30px;
+    text-align: end;
+    text-transform: uppercase;
+}
+
+
+
+
+
+.card-leader-team{
+    border: none;
+    border-radius: 0;
+}
+
+.card-leader-team-body{
+    background-color: var(--bg-color-card);
+    color: var(--text-color);
+}
+
+.card-img-top{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.card-title-aboutUs{
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+.card-text-aboutUs{
+    color: var(--red-primary);
+}
+
+.aboutUs-socials a{
+    margin: 0 20px!important;   
+}
+
+.fullteam-btn-aboutUs{
+    margin-top: 20px;
+}

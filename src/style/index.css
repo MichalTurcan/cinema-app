@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+}
+
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+  }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font);
+    transition: background-color 1s, color 0.7s, border 0.7s;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+#btn-change-theme {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--red-primary);
+    color: var(--light-primary);
+    padding: 10px 15px;
+    border-radius: 200px;
+    z-index: 99;
+    transition: all 0.3s ease-in-out;
+  }
+
+#btn-change-theme:hover {
+    transform: scale(1.2);
+}
+

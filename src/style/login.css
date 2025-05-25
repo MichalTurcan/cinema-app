@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+    --font-second: 'Khand', sans-serif;
+
+    --brightness-level: 1.3;
+}
+
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+
+    --brightness-level: 0.98;
+  }
+
+
+
+.modal-loginSignUp{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: transparent !important;
+}
+
+.modal-content-login{
+    position: relative;
+    width: 450px;
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--light-primary) !important;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 7.5em 2.5em 4em 2.5em;
+    color: var(--light-primary);
+}
+
+.modal-header{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-primary);
+    width: 140px;
+    height: 70px;
+    border-radius: 0 0 20px 20px;
+}
+
+.modal-header span {
+    font-size: 30px;
+    color: var(--dark-primary);
+}
+
+.modal-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-right-radius: 50%;
+    background: transparent;
+    box-shadow: 15px 0 0 0 var(--light-primary);
+}
+
+.modal-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    background: transparent;
+    box-shadow: -15px 0 0 0 var(--light-primary);
+}
+
+.input-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.input-field {
+    width: 100%;
+    height: 55px;
+    font-size: 16px;
+    background: transparent;
+    color: var(--light-primary);
+    padding-inline: 20px 50px;
+    border: 2px solid var(--light-primary);
+    border-radius: 30px;
+    outline: none;
+}
+
+#email {
+    margin-bottom: 10px;
+}
+
+
+.label {
+    position: absolute;
+    top: -28px;
+    left: 20px;
+    transition: 0.2s;
+}
+
+.input-field:focus~.label,
+.input-field:valid .label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 14px;
+    background-color: var(--light-primary);
+    border-radius: 30px;
+    color: var(--dark-primary);
+    padding: 0 10px;
+}
+
+.icon-login {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 25px;
+    color: var(--light-primary);
+}
+
+.forgot {
+    display: flex;
+    justify-content: end;
+    font-size: 15px;
+}
+
+.forgot a{
+    text-decoration: none;
+    color: var(--light-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+.forgot a:hover{
+    text-decoration: underline;
+}
+
+.input-submit {
+    width: 100%;
+    height: 50px;
+    background: #c6c3c3;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--dark-primary);
+}
+
+.input-submit:hover {
+    background: var(--light-primary);
+}
+.register {
+    text-align: center;
+    
+}
+.register button {
+    background-color: transparent;
+    border: none;
+    color: var(--light-primary);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.register button:hover {
+    text-decoration: underline !important;
+}
+
+.loginSignup-btn{
+    color: var(--light-primary);
+    background-color: transparent;
+    border: none;
+    
+    position: absolute;
+    left: 91%;
+    top: 0;
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 564px) {
+    .modal-loginSignUp {
+        padding: 20px;
+    }
+    .login_box {
+        padding: 7.5em 1.5em 4em 1.5em;
+    }
+
+    .loginSignup-btn{
+        left: 87%;
+        top: 0;
+    }
+}
+
+
+
+
+
+
+
+

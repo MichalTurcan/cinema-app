@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+}
+
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+  }
+
+.switch-button-group{
+    display: inline-flex;
+    border: solid 1px var(--text-color);
+    border-radius: 200px;
+    color: var(--text-color);
+    margin-right: 0.5em;
+
+}
+
+.switch-button{
+    background-color: transparent;
+    border: transparent;
+    font-size: 12px;
+    padding: 0 10px;
+    margin: 1px 1px;
+    border-radius: 100px;
+    transition: all 1s ease-in-out;
+}
+
+.switch-button-active{
+    color: var(--bg-color) !important;
+    background-color: var(--text-color) !important;
+
+}
+
+.switch-button-notactive{
+    color: var(--text-color) !important;
+    background-color: transparent !important;
+
+}

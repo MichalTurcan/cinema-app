@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;700&display=swap');
+
+:root {
+    --dark-primary: #0d0d0d;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+    --font-second: 'Khand', sans-serif;
+}
+.light-mode {
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+
+  }
+
+.rows{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat{
+    width: 30px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    margin: 2px;
+}
+
+.btn-res{
+    border: 1px solid var(--light-primary);
+    border-radius: 200px !important;
+    color: var(--light-primary) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.cancel{
+    margin-right: 0.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+.cancel:hover{
+    color: var(--red-primary) !important;
+    border: 1px solid var(--light-primary) !important;
+}
+
+.submit{
+    background-color: var(--light-primary) !important;
+    color: var(--dark-primary) !important;
+    border: solid 1px var(--light-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+.submit:hover {
+    color: var(--red-primary) !important;
+    border: solid 1px var(--light-primary);
+}
+
+
+

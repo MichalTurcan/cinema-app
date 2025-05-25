@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;700&display=swap');
+
+:root {
+    --nav: #000;
+    --nav-shadow: 244,244,244;
+    --light-primary: #FBFBFB;
+    --red-primary: #ED2628;
+
+    --bg-color: #0d0d0d;
+    --text-color: #FBFBFB;
+
+    --font: 'Open Sans', sans-serif;
+    --font-second: 'Khand', sans-serif;
+
+    --primary-dark: rgba(13, 13, 13, 1);
+    --primary-semi: rgba(13, 13, 13, 0.9);
+    --primary-transparent: rgba(13, 13, 13, 0);
+    --secondary-dark: rgba(0, 0, 0, 1);
+    --secondary-semi: rgba(0, 0, 0, 0.5);
+    --secondary-transparent: rgba(0, 0, 0, 0);
+
+    --percentage-primary: 30%;
+    --percentage-second: 80%;
+    --percentage-third: calc(100% - 13vh);
+}
+
+.light-mode {
+    --nav: #f4f4f4;
+    --nav-shadow: 0,0,0;
+
+    --bg-color: #FBFBFB;
+    --text-color: #0d0d0d;
+
+    --primary-dark: rgba(251,251,251, 1);
+    --primary-semi: rgba(13,13,13, 0.9);
+    --primary-transparent: rgba(13,13,13, 0);
+    --secondary-dark: rgba(0, 0, 0, 1);
+    --secondary-semi: rgba(0, 0, 0, 0.5);
+    --secondary-transparent: rgba(0, 0, 0, 0);
+
+    --percentage-primary: 20%;
+    --percentage-second: 87.5%;
+    --percentage-third: calc(100% - 10vh);
+
+  }
+
+
+.navbar {
+    background-color: var(--nav) !important;
+    transition: all 1s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    border-radius: 0;
+    
+}
+
+.navbar.scrolled {
+    padding: 10px 30px;
+    
+    border-radius: 50px;
+    margin-top: 10px;
+    width: 80%;
+    box-shadow: 0px 4px 10px rgba(var(--nav-shadow), 0.3);
+}
+
+.logo{
+    height: 20px;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-size: 17px;
+    margin: 0 10px;
+    text-transform: uppercase;
+}
+
+.btn-nav {
+    border: 1px solid var(--text-color);
+    border-radius: 200px !important;
+    color: var(--text-color) !important;
+    transition: all 1s ease-in-out;
+}
+
+.login {
+    margin-right: 0.5em;
+    transition: all 1s ease-in-out;
+}
+
+.login:hover {
+    color: var(--red-primary) !important;
+    border: 1px solid var(--text-color) !important;
+}
+
+.signup {
+    background-color: var(--text-color) !important;
+    color: var(--bg-color) !important;
+    border: solid 1px var(--text-color);
+    transition: all 1s ease-in-out;
+}
+
+.signup:hover {
+    color: var(--red-primary) !important;
+    border: solid 1px var(--text-color);
+}
+
+.nav-link:hover {
+    color: var(--red-primary) !important;
+}
+
+#header {
+    position: relative;
+    /* background-image:
+    linear-gradient(to bottom,
+    var(--primary-transparent) var(--percentage-primary),
+    var(--primary-semi) var(--percentage-second),
+    var(--primary-dark) var(--percentage-third)),
+linear-gradient(to top,
+    var(--secondary-transparent) 80%,
+    var(--secondary-semi) 90%,
+    var(--secondary-dark) 100%),
+        url('https://svetapple.sk/wp-content/uploads/2024/11/Aamiki1.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 8vh;
+    height: 105vh;
+    background-color: #000;
+}
+
+.mask{
+    height: 90vh;
+    max-height: 90vh;
+}
+
+.projection {
+    font-family: var(--font-second);
+    font-size: 3vh;
+    letter-spacing: 10px;
+    margin-top: 50px;
+    text-transform: uppercase;
+}
+
+.film-info {
+    padding-bottom: 100px;
+}
+
+.trailer{
+    font-size: 2vh;
+    font-size: var(--font-second);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.play-trailer-btn{
+    width: 6vh;
+    height: 6vh;
+    border-radius: 6vh !important;
+    border: 1px solid var(--light-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+.play-trailer-btn:hover{
+    border: 1px solid var(--red-primary) !important;
+    transform: scale(1.2);
+}
+
+.bi-play-fill {
+    color: var(--red-primary);
+    position: relative;
+    left: 5%;
+}
+
+.film-title {
+    font-size: 6vw;
+    font-weight: 900;
+    width: 100%;
+}
+
+.film-actors{
+    font-size: 2vh;
+    font-size: var(--font-second);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.btn-movie {
+    border: 1px solid var(--light-primary);
+    border-radius: 50px !important;
+    color: var(--light-primary) !important;
+}
+
+.btn-movie:hover {
+    color: var(--red-primary) !important;
+    background-color: transparent !important;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  
+  .modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    background: black;
+    padding: 20px;
+    text-align: center;
+    background-color: transparent !important;
+    border: none !important;
+  }
+  
+  .close {
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    
+    border-radius: 10px;
+  }
+  
+
+  
+
+  
