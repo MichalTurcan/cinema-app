@@ -26,7 +26,7 @@ function GamaMembers() {
                 return;
             }
             
-            const response = await axios.get('http://localhost:5001/api/members', {
+            const response = await axios.get('/api/members', {
                 headers: {
                     Authorization: `Bearer ${user.token}`
                 }
@@ -83,7 +83,7 @@ function GamaMembers() {
               }
 
               await axios.post(
-                `http://localhost:5001/api/users/${userId}/removeFromMembers`,
+                `/api/users/${userId}/removeFromMembers`,
                 {}, 
                 {
                   headers: {

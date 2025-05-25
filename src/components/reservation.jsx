@@ -21,7 +21,7 @@ function Reservation() {
   useEffect(() => {
     const fetchTodayScreening = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/movies/today-screening');
+        const response = await axios.get('/api/movies/today-screening');
         
         if (response.data.hasScreeningToday && response.data.winnerDetermined) {
           setScreeningId(response.data.screening.id);
@@ -47,7 +47,7 @@ function Reservation() {
       try {
         setLoading(true);
         
-        const configResponse = await axios.get('http://localhost:5001/api/cinema/configuration',{
+        const configResponse = await axios.get('/api/cinema/configuration',{
           headers: {
             Authorization: `Bearer ${user.token}`
           }
@@ -59,7 +59,7 @@ function Reservation() {
         
         setRowsConfig(configResponse.data.rows);
         
-        const seatsResponse = await axios.get(`http://localhost:5001/api/screenings/${screeningId}/seats`,{
+        const seatsResponse = await axios.get(`/api/screenings/${screeningId}/seats`,{
           headers: {
             Authorization: `Bearer ${user.token}`
           }
@@ -118,7 +118,7 @@ function Reservation() {
       if (selectedSeat && selectedSeat.rowId === rowId && selectedSeat.seatNumber === seatNumber) {
 
         console.log(user.userId);
-        await axios.post('http://localhost:5001/api/seats/update', {
+        await axios.post('/api/seats/update', {
           screeningId,
           rowId,
           seatNumber,
@@ -137,7 +137,7 @@ function Reservation() {
         if (selectedSeat) {
           const oldSeatKey = `${selectedSeat.rowId}-${selectedSeat.seatNumber}`;
           
-          await axios.post('http://localhost:5001/api/seats/update', {
+          await axios.post('/api/seats/update', {
             screeningId,
             rowId: selectedSeat.rowId,
             seatNumber: selectedSeat.seatNumber,
@@ -157,7 +157,7 @@ function Reservation() {
           setSeatsStatus(updatedSeatsStatus);
         }
         
-        await axios.post('http://localhost:5001/api/seats/update', {
+        await axios.post('/api/seats/update', {
           screeningId,
           rowId,
           seatNumber,
@@ -194,7 +194,7 @@ function Reservation() {
     try {
       const seatKey = `${selectedSeat.rowId}-${selectedSeat.seatNumber}`;
       
-      await axios.post('http://localhost:5001/api/seats/update', {
+      await axios.post('/api/seats/update', {
         screeningId,
         rowId: selectedSeat.rowId,
         seatNumber: selectedSeat.seatNumber,
@@ -227,7 +227,7 @@ function Reservation() {
     try {
       const seatKey = `${selectedSeat.rowId}-${selectedSeat.seatNumber}`;
       
-      await axios.post('http://localhost:5001/api/seats/update', {
+      await axios.post('/api/seats/update', {
         screeningId,
         rowId: selectedSeat.rowId,
         seatNumber: selectedSeat.seatNumber,
@@ -266,7 +266,7 @@ function Reservation() {
     try {
       const seatKey = `${userReservation.rowId}-${userReservation.seatNumber}`;
       
-      await axios.post('http://localhost:5001/api/seats/update', {
+      await axios.post('/api/seats/update', {
         screeningId,
         rowId: userReservation.rowId,
         seatNumber: userReservation.seatNumber,

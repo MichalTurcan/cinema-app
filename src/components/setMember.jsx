@@ -41,7 +41,7 @@ const SetMember = ({ isOpen, onClose, selectedUser }) => {
 
     const fetchRoles = async () => {
         try {
-            const response = await axios.get('http://localhost:5001/api/roles');
+            const response = await axios.get('/api/roles');
 
             const rolesData = response.data.data || response.data || [];
             setRoles(rolesData);
@@ -69,7 +69,7 @@ const SetMember = ({ isOpen, onClose, selectedUser }) => {
         if (file) formData.append("image", file);
 
         try {
-            const response = await axios.put(`http://localhost:5001/api/users/${selectedUser.userId}`, formData, {
+            const response = await axios.put(`/api/users/${selectedUser.userId}`, formData, {
                 headers: {"Content-Type": "multipart/form-data"}
             });
 

@@ -137,35 +137,35 @@ const MoviesVote = () => {
             try {
                 setLoadingMovies(true);
 
-                const moviesResponse = await axios.get('http://localhost:5001/api/movies', {
+                const moviesResponse = await axios.get('/api/movies', {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }
                 });
                 setMovies(moviesResponse.data);
 
-                const genresResponse = await axios.get('http://localhost:5001/api/movies/genres', {
+                const genresResponse = await axios.get('/api/movies/genres', {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }
                 });
                 setAllGenres(genresResponse.data);
 
-                const actorsResponse = await axios.get('http://localhost:5001/api/movies/actors', {
+                const actorsResponse = await axios.get('/api/movies/actors', {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }
                 });
                 setAllActors(actorsResponse.data);
 
-                const directorsResponse = await axios.get('http://localhost:5001/api/movies/directors', {
+                const directorsResponse = await axios.get('/api/movies/directors', {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }
                 });
                 setAllDirectors(directorsResponse.data);
 
-                const screenwritersResponse = await axios.get('http://localhost:5001/api/movies/screenwriters', {
+                const screenwritersResponse = await axios.get('/api/movies/screenwriters', {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }
@@ -398,7 +398,7 @@ const MoviesVote = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5001/api/movies/actors', {
+            const response = await axios.post('/api/movies/actors', {
                 first_name: newActorFirstName,
                 last_name: newActorLastName || ''
             },
@@ -521,7 +521,7 @@ const MoviesVote = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5001/api/movies/directors', {
+            const response = await axios.post('/api/movies/directors', {
                 first_name: newDirectorFirstName,
                 last_name: newDirectorLastName || ''
             },
@@ -640,7 +640,7 @@ const MoviesVote = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5001/api/movies/screenwriters', {
+            const response = await axios.post('/api/movies/screenwriters', {
                 first_name: newScreenwriterFirstName,
                 last_name: newScreenwriterLastName || ''
             },
@@ -762,7 +762,7 @@ const MoviesVote = () => {
 
             console.log(updatedMovie);
 
-            const response = await axios.put(`http://localhost:5001/api/movies/editMovie/${movieId}`, updatedMovie,
+            const response = await axios.put(`/api/movies/editMovie/${movieId}`, updatedMovie,
                 {
                     headers: {
                         Authorization: `Bearer ${user.token}`
@@ -818,7 +818,7 @@ const MoviesVote = () => {
                     .map(movie => ({ movie_id: movie.id }));
             }
 
-            const response = await axios.post('http://localhost:5001/api/movies/create_screening', formData, {
+            const response = await axios.post('/api/movies/create_screening', formData, {
                 headers: {
                     Authorization: `Bearer ${user.token}`
                 }

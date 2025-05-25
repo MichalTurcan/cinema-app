@@ -19,7 +19,7 @@ function UserInfo() {
         try {
             console.log('Fetching user with ID:', userId);
             setLoading(true);
-            const response = await axios.get(`http://localhost:5001/api/users/${userId}/userInfo`);
+            const response = await axios.get(`/api/users/${userId}/userInfo`);
 
             console.log(response.data);
 

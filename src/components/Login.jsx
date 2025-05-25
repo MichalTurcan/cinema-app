@@ -48,7 +48,7 @@ const LoginSignupModal = ({ isOpen, onClose, initialMode = 'login' }) => {
         }
 
         try {
-            const response = await fetch("http://localhost:5001/login", {
+            const response = await fetch("/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
@@ -101,7 +101,7 @@ const LoginSignupModal = ({ isOpen, onClose, initialMode = 'login' }) => {
 
 
         try {
-            const response = await axios.post('http://localhost:5001/register', {
+            const response = await axios.post('/register', {
                 email,
                 password,
                 confirmPassword

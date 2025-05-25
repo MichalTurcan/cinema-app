@@ -35,7 +35,7 @@ function EventAddImages() {
                 return;
             }
             
-            const response = await axios.get(`http://localhost:5001/api/events/${eventId}`, {
+            const response = await axios.get(`/api/events/${eventId}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`
                 }
@@ -123,7 +123,7 @@ function EventAddImages() {
             });
 
             const response = await axios.post(
-                `http://localhost:5001/api/events/${eventId}/add-images`,
+                `/api/events/${eventId}/add-images`,
                 formData,
                 {
                     headers: {

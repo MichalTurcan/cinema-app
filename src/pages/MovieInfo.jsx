@@ -16,9 +16,9 @@ function MovieInfo() {
     const fetchMovieInfo = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:5001/api/movies/${movieId}/movieInfo`);
+            const response = await axios.get(`/api/movies/${movieId}/movieInfo`);
 
-            const closesScreeningResponse = await axios.get(`http://localhost:5001/api/movies/closes-screening`);
+            const closesScreeningResponse = await axios.get(`/api/movies/closes-screening`);
 
             const movieDataArray = response.data.data;
             const movieGenresArray = response.data.genres;

@@ -74,7 +74,7 @@ function Add_Event() {
             submitData.append('isPast', 'false');
 
 
-            await axios.post('http://localhost:5001/api/events/add_event', submitData, {
+            await axios.post('/api/events/add_event', submitData, {
                 headers: {
                   Authorization: `Bearer ${user.token}`
                 }

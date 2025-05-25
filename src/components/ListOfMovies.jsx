@@ -22,7 +22,7 @@ function PlexMovies() {
     const fetchMovies = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5001/api/movies', {
+        const response = await axios.get('/api/movies', {
           headers: {
               Authorization: `Bearer ${user.token}`
           }
@@ -45,7 +45,7 @@ function PlexMovies() {
       setSyncMessage("Syncing with Jellyfin...");
 
       
-      const response = await axios.post('http://localhost:5001/api/movies/sync', 
+      const response = await axios.post('/api/movies/sync', 
         {},
         {
         headers: {
@@ -55,7 +55,7 @@ function PlexMovies() {
       
       setSyncMessage(`Sync completed: ${response.data.stats.added} movies added, ${response.data.stats.updated} movies updated`);
       
-      const moviesResponse = await axios.get('http://localhost:5001/api/movies', {
+      const moviesResponse = await axios.get('/api/movies', {
         headers: {
             Authorization: `Bearer ${user.token}`
         }

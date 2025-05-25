@@ -31,7 +31,7 @@ function GamaUsers() {
                 return;
             }
 
-            const response = await axios.get('http://localhost:5001/api/users', {
+            const response = await axios.get('/api/users', {
                 headers: {
                     Authorization: `Bearer ${user.token}`
                 }
@@ -84,7 +84,7 @@ function GamaUsers() {
 
     const handleRemoveMember = async (userId) => {
         try {
-            await axios.post(`http://localhost:5001/api/users/${userId}/removeFromMembers`);
+            await axios.post(`/api/users/${userId}/removeFromMembers`);
             fetchUsers();
         } catch (error) {
             console.error("Chyba pri odstraňovani člena: ", error);
@@ -93,7 +93,7 @@ function GamaUsers() {
 
     const handleOpenUserInfo = async (userId) => {
         try {
-            await axios.get(`http://localhost:5001/api/users/${userId}/userInfo`);
+            await axios.get(`/api/users/${userId}/userInfo`);
     
             window.location.href = `/users/${userId}/userInfo`;
 

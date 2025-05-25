@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children, requiredRole = "authenticated" }) => {
       
       if (requiredRole === "member" || requiredRole === "admin" || requiredRole === "owner-or-member") {
         try {
-          const response = await fetch('http://localhost:5001/api/members', {
+          const response = await fetch('/api/members', {
             headers: {
               'Authorization': `Bearer ${user.token}`
             }
@@ -30,7 +30,7 @@ const ProtectedRoute = ({ children, requiredRole = "authenticated" }) => {
           setIsMember(response.ok);
           
           if (requiredRole === "admin") {
-            const adminResponse = await fetch('http://localhost:5001/api/admin', {
+            const adminResponse = await fetch('/api/admin', {
               headers: {
                 'Authorization': `Bearer ${user.token}`
               }

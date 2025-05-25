@@ -39,7 +39,7 @@ function EditUserInfo() {
   useEffect(() => {
     const fetchAcademicOptions = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/academic-options');
+        const response = await axios.get('/api/academic-options');
         if (response.data.success) {
           setAcademicOptions(response.data.data);
         }
@@ -55,7 +55,7 @@ function EditUserInfo() {
     const checkMemberStatus = async () => {
       if (user && user.token) {
         try {
-          const response = await axios.get('http://localhost:5001/api/members', {
+          const response = await axios.get('/api/members', {
             headers: {
               'Authorization': `Bearer ${user.token}`
             }
@@ -75,7 +75,7 @@ function EditUserInfo() {
     const fetchUserData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5001/api/users/${userId}/userInfo`);
+        const response = await axios.get(`/api/users/${userId}/userInfo`);
         
         const userData = Array.isArray(response.data.data) && response.data.data.length > 0 
           ? response.data.data[0] 
@@ -179,7 +179,7 @@ function EditUserInfo() {
       }
       
       await axios.put(
-        `http://localhost:5001/api/users/${userId}/updateInfo`, 
+        `/api/users/${userId}/updateInfo`, 
         formDataToSubmit, 
         {
           headers: {

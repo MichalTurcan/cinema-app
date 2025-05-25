@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
   const checkMember = useCallback(async () => {
     if (!user || !user.token) return false;
     try {
-      const response = await fetch('http://localhost:5001/api/members', {
+      const response = await fetch('/api/members', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

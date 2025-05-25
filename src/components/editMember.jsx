@@ -43,7 +43,7 @@ const EditMember = ({ isOpen, onClose, selectedMember }) => {
 
     const fetchRoles = async () => {
         try {
-            const response = await axios.get('http://localhost:5001/api/roles');
+            const response = await axios.get('/api/roles');
 
             const rolesData = response.data.data || response.data || [];
             setRoles(rolesData);
@@ -76,7 +76,7 @@ const EditMember = ({ isOpen, onClose, selectedMember }) => {
 
 
         try {
-            const response = await axios.put(`http://localhost:5001/api/members/${selectedMember.memberId}/editMember`, formData, {
+            const response = await axios.put(`/api/members/${selectedMember.memberId}/editMember`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${user.token}`

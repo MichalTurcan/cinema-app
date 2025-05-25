@@ -22,7 +22,7 @@ function FullTeam() {
             console.log('Fetching members...');
 
             
-            const response = await axios.get('http://localhost:5001/api/members');
+            const response = await axios.get('/api/members');
 
             console.log('Response received:', response);
             const membersData = response.data.data || response.data || [];

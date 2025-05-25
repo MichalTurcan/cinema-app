@@ -17,7 +17,7 @@ function Events() {
         try {
             console.log("Fetching events...");
 
-            const response = await axios.get('http://localhost:5001/api/events');
+            const response = await axios.get('/api/events');
 
             console.log('Response received: ', response);
             const eventsData = response.data.data || response.data || [];
@@ -73,7 +73,7 @@ function Events() {
             }
 
             await axios.post(
-                `http://localhost:5001/api/events/${eventId}/deleteEvent`,
+                `/api/events/${eventId}/deleteEvent`,
                 {},
                 {
                     headers: {

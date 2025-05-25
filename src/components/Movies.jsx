@@ -41,7 +41,7 @@ function Movies() {
         const fetchVotingData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:5001/api/movies/active-voting');
+                const response = await axios.get('/api/movies/active-voting');
 
                 if (response.data.length === 0) {
                     setVotingData({});
@@ -109,7 +109,7 @@ function Movies() {
                 const token = localStorage.getItem("token");
                 const userId = localStorage.getItem("userId"); 
 
-                await axios.post('http://localhost:5001/api/movies/vote', {
+                await axios.post('/api/movies/vote', {
                     dateId: votingData[selectedDay].dateId,
                     movieId: selectedMovie.id,
                     userId: userId 

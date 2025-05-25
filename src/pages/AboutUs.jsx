@@ -17,7 +17,7 @@ function AboutUs() {
         const fetchLeaders = async () => {
             try {
                 const roleIds = [4, 2, 3, 1]; 
-                const response = await axios.get(`http://localhost:5001/api/leaders`, {
+                const response = await axios.get(`/api/leaders`, {
                     params: { roleIds: roleIds.join(",") }
                 });
 

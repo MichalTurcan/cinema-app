@@ -47,7 +47,7 @@ const ReservationModal = ({ isOpenRes, onCloseRes }) => {
 
 const handleOpenMovieInfo = async (movieId) => {
   try {
-      await axios.get(`http://localhost:5001/api/movies/${movieId}/movieInfo`);
+      await axios.get(`/api/movies/${movieId}/movieInfo`);
       window.location.href = `/${movieId}/movieInfo`;
 
   } catch (error) {
@@ -74,7 +74,7 @@ function Header() {
     const fetchScreeningData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5001/api/movies/today-screening');
+        const response = await axios.get('/api/movies/today-screening');
 
         setScreeningData(response.data);
         setLoading(false)
