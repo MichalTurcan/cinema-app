@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const [users] = await db.query(`
-        SELECT * FROM users WHERE users.email != "gama.uniza@gmail.com" AND users.isMember = 0
+        SELECT * FROM users WHERE users.email != 'gama.uniza@gmail.com' AND users.isMember = 0
       `);
 
     if (!users || users.length === 0) {
