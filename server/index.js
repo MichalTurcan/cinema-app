@@ -121,7 +121,7 @@ app.get("/api/data", (req, res) => {
 });
 
 // Servírovanie React build súborov
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 // Error handler MUSÍ byť PRED catch-all route
 app.use((err, req, res, next) => {
@@ -131,7 +131,7 @@ app.use((err, req, res, next) => {
 
 // Catch-all handler MUSÍ byť POSLEDNÝ
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 const start = async () => {
